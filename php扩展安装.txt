@@ -1,0 +1,28 @@
+[pdo]
+php运行环境： nginx/1.1.19，mysql Ver 14.14 Distrib 5.5.40，PHP 5.5.9
+由于ubuntu默认的安装不支持pdo，需要自己添加扩展，具体如下：
+sudo apt-get install php5-dev
+sudo apt-get install php5-pear
+sudo apt-get install libmysqlclient15-dev
+
+完成以上安装之后，开始安装pdo
+sudo pecl install pdo
+
+[Some stuff excluded for brevity]make: * [pdo_dbh.lo] Error 1 ERROR: `make' failed
+
+上面的报错只是说明pdo已经加入了php的默认安装，不需要再另外安装。所以可以继续安装pdo_mysql
+sudo pecl install pdo_mysql
+
+此时会报错如下：
+[Some stuff excluded for brevity]checking for PDO includes... checking for PDO includes...configure: error: Cannot find php_pdo_driver.h.ERROR: `/tmp/pear/temp/PDO_MYSQL/configure' failed
+
+以上表示在pear中找不到pdo_mysql 驱动，那重新安装php5-mysql看看
+sudo apt-get install php5-mysql
+
+安装成功后，运行正常。虽然我们好像已经在apt安装过该php5-mysql，但是这里还是需要再安装一遍。
+
+[gd库]
+sudo apt-get install php7.0-gd
+
+[cURL]
+sudo apt-get install curl libcurl3 libcurl3-dev php5-curl
