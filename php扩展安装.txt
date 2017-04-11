@@ -26,3 +26,6 @@ sudo apt-get install php7.0-gd
 
 [cURL]
 sudo apt-get install curl libcurl3 libcurl3-dev php5-curl
+
+[mbstring](yii2要用)
+sudo apt-get install php-mbstring
