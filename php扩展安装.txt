@@ -29,3 +29,57 @@ sudo apt-get install curl libcurl3 libcurl3-dev php5-curl
 
 [mbstring](yii2要用)
 sudo apt-get install php-mbstring
+
+[Error]
+首先要编辑PHP配置文件：
+
+vi /etc/php.ini
+error_reporting = E_ERROR
+display_errors = On 
+因为我开启了php-fpm。所以，还要编辑 php-fpm.conf文件，把php_flag[display_errors]设为on：
+
+vi php-fpm.conf
+
+php_flag[display_errors] = on
+这样在开发的时候就可以在浏览器中显示php出现的错误了，非常方便。
+
+[Xdebug]
+phpha@asus:~$ wget http://www.xdebug.org/files/xdebug-2.2.5.tgz
+phpha@asus:~$ tar -zxf xdebug-2.2.5.tgz
+phpha@asus:~$ cd xdebug-2.2.5/
+phpha@asus:~/xdebug-2.2.5$ /usr/local/php/bin/phpize
+Configuring for:
+PHP Api Version:         20121113
+Zend Module Api No:      20121212
+Zend Extension Api No:   220121212
+phpha@asus:~/xdebug-2.2.5$ ./configure --enable-xdebug --with-php-config=/usr/local/php/bin/php-config
+phpha@asus:~/xdebug-2.2.5$ sudo make
+phpha@asus:~/xdebug-2.2.5$ sudo make install
+
+Installing shared extensions:     /usr/local/php/lib/php/extensions/no-debug-zts-20121212/
+  +----------------------------------------------------------------------+
+  |                                                                      |
+  |   INSTALLATION INSTRUCTIONS                                          |
+  |   =========================                                          |
+  |                                                                      |
+  |   See http://xdebug.org/install.php#configure-php for instructions   |
+  |   on how to enable Xdebug for PHP.                                   |
+  |                                                                      |
+  |   Documentation is available online as well:                         |
+  |   - A list of all settings:  http://xdebug.org/docs-settings.php     |
+  |   - A list of all functions: http://xdebug.org/docs-functions.php    |
+  |   - Profiling instructions:  http://xdebug.org/docs-profiling2.php   |
+  |   - Remote debugging:        http://xdebug.org/docs-debugger.php     |
+  |                                                                      |
+  |                                                                      |
+  |   NOTE: Please disregard the message                                 |
+  |       You should add "extension=xdebug.so" to php.ini                |
+  |   that is emitted by the PECL installer. This does not work for      |
+  |   Xdebug.                                                            |
+  |                                                                      |
+  +----------------------------------------------------------------------+
+
+
+之后编译完的xdebug在modules/xdebug.so中,在/usr/lib/php/20161012中查看是否有xdebug.so,如果有不用挪.
+最后修改php配置文件,在末尾写入zend_extension= "xdebug.so所在路径";
+重启服务器.
