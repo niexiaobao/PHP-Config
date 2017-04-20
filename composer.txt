@@ -1,0 +1,22 @@
+下载安装composer
+
+cd /usr/local/bin
+(install)
+
+ sudo curl -s https://getcomposer.org/installer | sudo php
+(Add execute permissions.)
+
+sudo chmod a+x composer.phar
+(This step is not necessary. If needed, you can use this script to update Composer.)
+
+sudo composer.phar self-update
+mv composer.phar /usr/bin/composer
+
+修改镜像地址
+方法一： 修改 composer 的全局配置文件（推荐方式）
+
+打开命令行窗口（windows用户）或控制台（Linux、Mac 用户）并执行如下命令：
+
+复制
+composer config -g repo.packagist composer https://packagist.phpcomposer.com
+
