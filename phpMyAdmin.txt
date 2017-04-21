@@ -1,0 +1,9 @@
+安装phpMyAdmin
+
+[ubuntu]
+sudo apt-get install phpmyadmin
+
+将phpmyadmin挪入服务器目录
+sudo ln -s /usr/share/phpmyadmin /var/www/html/pma
+
+最后输入localhost/pma查看是否可以打开
