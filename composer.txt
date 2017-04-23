@@ -20,3 +20,7 @@ mv composer.phar /usr/bin/composer
 复制
 composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
+
+
+[deepin使用独显]
+primusrun steam
