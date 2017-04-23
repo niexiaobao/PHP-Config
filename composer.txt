@@ -3,7 +3,7 @@
 cd /usr/local/bin
 (install)
 
- sudo curl -s https://getcomposer.org/installer | sudo php
+ sudo curl -sS https://getcomposer.org/installer | sudo php
 (Add execute permissions.)
 
 sudo chmod a+x composer.phar
