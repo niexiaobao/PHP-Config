@@ -20,7 +20,13 @@ mv composer.phar /usr/bin/composer
 复制
 composer config -g repo.packagist composer https://packagist.phpcomposer.com
 
+search
+查看在composer包中存在关键词的所有包
+composer search keyname
 
+show
+查看具体包的版本信息
+composer show --all 'vendor/keyname'
 
 [deepin使用独显]
 primusrun steam
